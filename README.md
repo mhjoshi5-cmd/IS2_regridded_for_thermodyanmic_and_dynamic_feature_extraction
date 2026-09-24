@@ -89,9 +89,8 @@ The workflow includes HDF5 data extraction, along-track segmentation, statistica
 
 ## 5. Example research output
 
-A sample dataset is provided for the eastern Weddell Sea in January 2024, aggregated at approximately 25-km spatial intervals.
-
-The dataset includes latitude, longitude, total segment length, average modal freeboard, average pressure-ridge height, ridge fraction and surface roughness.
+* A sample dataset is provided for the eastern Weddell Sea in January 2024, aggregated at approximately 25-km spatial intervals. The dataset includes latitude, longitude, total segment length, average modal freeboard, average pressure-ridge height, ridge fraction and surface roughness.
+* Thermodynamic Sea Ice Thickness map from 2019-2024 as image. 
 
 
 ## 6. Related research
