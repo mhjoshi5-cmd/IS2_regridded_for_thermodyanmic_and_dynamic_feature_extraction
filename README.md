@@ -31,5 +31,12 @@ Pearson correlation analysis is performed to investigate the relationship betwee
 
 Python, NumPy, pandas, h5py, xarray, SciPy, scikit-learn, and pyproj.
 
+# Related publication:
+Joshi, M. (2025). Analyzing Sea Ice Formation, Growth, and Deformation in the Weddell Sea, Antarctica Using ICESat-2 (Doctoral dissertation, The University of Texas at San Antonio).
+
+If you use this code, please cite:
+
+Joshi, M. (2026). GitHub: https://github.com/mhjoshi5-cmd/IS2_regridded_for_thermodyanmic_and_dynamic_feature_extraction 
+
 
 
