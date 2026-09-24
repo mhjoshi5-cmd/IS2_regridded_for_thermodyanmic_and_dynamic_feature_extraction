@@ -41,5 +41,10 @@ If you use this code, please cite:
 
 Joshi, M. (2026). GitHub: https://github.com/mhjoshi5-cmd/IS2_regridded_for_thermodyanmic_and_dynamic_feature_extraction 
 
+## Author
+
+Mansi Joshi, PhD  
+Geospatial Data Scientist | Remote Sensing | GIS | Python
+
 
 
