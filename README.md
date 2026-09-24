@@ -1,50 +1,114 @@
 # ICESat-2 ATL10 Sea-Ice Characterization and ERA5 Atmospheric Analysis
-# Overview
 
-This project develops a Python-based processing and analysis workflow for investigating sea-ice freeboard, pressure ridging, surface roughness, and sea-ice thickness using NASA's ICESat-2 ATL10 product, together with atmospheric conditions from the ERA5 reanalysis.
-The workflow processes raw ICESat-2 ATL10 HDF5 files, extracts freeboard observations, identifies representative modal freeboard values, characterizes pressure ridges and surface roughness along the satellite ground track, and aggregates the observations to approximately 3-km and 25-km spatial scales.
-The processed ICESat-2 observations are subsequently spatially matched with ERA5 atmospheric variables to investigate relationships between sea-ice properties and atmospheric conditions.
+## Research overview
 
-# Methodology
+This project develops a Python-based geospatial workflow to characterize Antarctic sea-ice properties from NASA's ICESat-2 ATL10 observations and investigate their relationships with atmospheric conditions from ERA5 reanalysis.
 
-## 1. ICESat-2 ATL10 Data Processing
+The workflow combines along-track satellite observations, statistical characterization of sea-ice morphology, spatial aggregation and atmospheric data integration.
 
-Raw ATL10 HDF5 files are processed to extract sea-ice freeboard, geographic coordinates, along-track distances, and segment lengths. Invalid observations are filtered before further analysis.
+It focuses on four related components:
 
-## 2. Sea-Ice Characterization
+* Characterization of sea-ice freeboard distributions using kernel density estimation.
+* Quantification of pressure-ridge characteristics and surface roughness.
+* Aggregation of satellite observations at approximately 3-km and 25-km spatial scales.
+* Integration with ERA5 air temperature and wind observations for investigating relationships between sea-ice properties and atmospheric conditions.
 
-Freeboard observations are divided into approximately 3-km along-track segments. Kernel Density Estimation (KDE) is used to determine modal freeboard, while pressure-ridge characteristics and surface roughness are calculated for each segment.
+The project supports research into sea-ice formation, growth and deformation in the Weddell Sea, Antarctica.
 
-The resulting measurements are aggregated into approximately 25-km latitude-based bins for regional analysis.
+## 1. Research objectives
 
-## 3. ERA5 Data Integration
+The objectives are to develop a reproducible processing workflow for characterizing sea-ice features from ICESat-2 observations, produce spatially aggregated datasets suitable for regional analysis, and investigate relationships between satellite-derived sea-ice properties and atmospheric conditions.
 
-ERA5 atmospheric variables, including 2-m air temperature and 10-m wind components, are spatially matched with processed ICESat-2 observations.
+The workflow integrates ICESat-2 ATL10 observations with ERA5 reanalysis, enabling the examination of sea-ice variability alongside near-surface temperature and wind fields.
 
-Coordinates are transformed into the Antarctic Polar Stereographic projection (EPSG:3031). Inverse Distance Weighting (IDW), using the six nearest ERA5 grid points, is applied to interpolate atmospheric variables to the ICESat-2 observation locations.
+## 2. Data sources
 
-## 4. Statistical Analysis
+### ICESat-2 ATL10
 
-Pearson correlation analysis is performed to investigate the relationship between sea-ice thickness and air temperature. Mean atmospheric conditions are also calculated at the satellite observation locations.
+NASA's ICESat-2 ATL10 product provides the satellite observations used for sea-ice characterization. The processing workflow extracts sea-ice freeboard, geographic coordinates, along-track distances and segment lengths from the original HDF5 files. Invalid observations are removed before subsequent calculations.
 
-# Tools and Technologies
+### ERA5 atmospheric reanalysis
 
-Python, NumPy, pandas, h5py, xarray, SciPy, scikit-learn, and pyproj.
+ERA5 provides atmospheric variables for investigating environmental conditions associated with the observed sea-ice properties.
+Variables incorporated into the workflow include:
 
-# Sample Output
-1. CSV file from Jan 2024 for eastern Weddell for 25 Km (Sample csv contains Latitude, Longitude, Total Segment Length (km), Average Modal Freeboard (m), Average Pressure Ridge (m), Ridge Fraction (%),Surface Roughness (m)	)
+* 2-m air temperature
+* 10-m zonal wind component
+* 10-m meridional wind component
 
-# Related publication:
-Joshi, M. (2025). Analyzing Sea Ice Formation, Growth, and Deformation in the Weddell Sea, Antarctica Using ICESat-2 (Doctoral dissertation, The University of Texas at San Antonio).
+## 3. Methodology
 
-If you use this code, please cite:
+### 3.1 Along-track processing
 
-Joshi, M. (2026). GitHub: https://github.com/mhjoshi5-cmd/IS2_regridded_for_thermodyanmic_and_dynamic_feature_extraction 
+ICESat-2 freeboard observations are divided into approximately 3-km along-track segments.
+
+Within each segment, freeboard distributions are characterized using kernel density estimation (KDE) to identify representative modal freeboard values.
+
+The workflow also calculates pressure-ridge characteristics and surface roughness, providing measures of sea-ice features beyond average freeboard alone.
+
+### 3.2 Regional spatial aggregation
+
+The along-track measurements are aggregated into approximately 25-km latitude-based bins.
+
+Aggregated variables include:
+
+* Total segment length
+* Average modal freeboard
+* Average pressure-ridge height
+* Ridge fraction
+* Surface roughness
+
+These outputs provide a spatially aggregated representation of the observed sea-ice characteristics for subsequent regional analysis.
+
+### 3.3 Atmospheric data integration
+
+* Processed ICESat-2 observations are spatially matched with ERA5 atmospheric fields.
+* Coordinates are transformed into the Antarctic Polar Stereographic projection (EPSG:3031).
+* Inverse Distance Weighting (IDW) interpolation is performed using the six nearest ERA5 grid points to estimate atmospheric variables at the satellite observation locations.
+* The resulting dataset combines satellite-derived sea-ice characteristics with atmospheric information.
+
+### 3.4 Statistical analysis
+
+* Pearson correlation analysis is used to investigate the statistical relationship between sea-ice thickness and 2-m air temperature.
+* Mean atmospheric conditions are also calculated at satellite observation locations.
+* These analyses provide an initial framework for examining relationships between sea-ice properties and atmospheric variability.
+
+
+
+## 4. Technical implementation
+
+**Programming language:** Python
+
+**Scientific computing:** NumPy, pandas and SciPy
+
+**Satellite and atmospheric data processing:** h5py and xarray
+
+**Statistical and spatial analysis:** scikit-learn and pyproj
+
+The workflow includes HDF5 data extraction, along-track segmentation, statistical characterization, spatial aggregation, coordinate transformation and interpolation of atmospheric variables.
+
+## 5. Example research output
+
+A sample dataset is provided for the eastern Weddell Sea in January 2024, aggregated at approximately 25-km spatial intervals.
+
+The dataset includes latitude, longitude, total segment length, average modal freeboard, average pressure-ridge height, ridge fraction and surface roughness.
+
+
+## 6. Related research
+
+This repository is associated with:
+
+Joshi, M. (2025). *Analyzing Sea Ice Formation, Growth, and Deformation in the Weddell Sea, Antarctica Using ICESat-2*. Doctoral dissertation, The University of Texas at San Antonio.
+
+It complements the [ICESat-2 Sea-Ice Thickness Pipeline](https://github.com/mhjoshi5-cmd/Sea-ice-thickness-ICESat2-pipeline), which focuses on sea-ice thickness retrieval using an improved buoyancy approach and comparisons with independent field observations.
+
+
+## 7. Citation
+
+Joshi, M. (2026). *Multiscale Sea-Ice Characterization Using ICESat-2 and ERA5*. GitHub. https://github.com/mhjoshi5-cmd/IS2_regridded_for_thermodynamic_and_dynamic_feature_extraction
 
 ## Author
 
-Mansi Joshi, PhD  
-Geospatial Data Scientist | Remote Sensing | GIS | Python
+**Mansi Joshi, PhD**
 
-
-
+Geospatial Data Scientist | Satellite Remote Sensing | Sea-Ice Observations | Python
