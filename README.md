@@ -31,6 +31,9 @@ Pearson correlation analysis is performed to investigate the relationship betwee
 
 Python, NumPy, pandas, h5py, xarray, SciPy, scikit-learn, and pyproj.
 
+# Sample Output
+1. CSV file from Jan 2024 for eastern Weddell for 25 Km (Sample csv contains Latitude, Longitude, Total Segment Length (km), Average Modal Freeboard (m), Average Pressure Ridge (m), Ridge Fraction (%),Surface Roughness (m)	)
+
 # Related publication:
 Joshi, M. (2025). Analyzing Sea Ice Formation, Growth, and Deformation in the Weddell Sea, Antarctica Using ICESat-2 (Doctoral dissertation, The University of Texas at San Antonio).
 
